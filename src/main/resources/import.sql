@@ -1,0 +1,2 @@
+INSERT INTO Aluno (id, name, cpf, email, telefone) VALUES (null,'Maria','708.456.887-99','maria@gmail.com','3451990')
+INSERT INTO Aluno (id, name, cpf, email, telefone) VALUES (null,'Walmir','123.456.789.-00','walmir@gmail.com','1235678')
