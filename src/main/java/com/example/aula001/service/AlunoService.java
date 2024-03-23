@@ -37,9 +37,10 @@ public class AlunoService {
     }
 
     public void delete(Long id){
-        AlunoDTO alunoDTO = getById(id);  
+        AlunoDTO alunoDTO = getById(id);
+        Aluno aluno = new Aluno(alunoDTO);
         if(alunoDTO != null){
-          alunoRepository.delete();
+          alunoRepository.delete(aluno);
         }
     }
 }

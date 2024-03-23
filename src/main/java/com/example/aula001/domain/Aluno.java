@@ -1,5 +1,6 @@
 package com.example.aula001.domain;
 
+import com.example.aula001.DTO.AlunoDTO;
 import jakarta.persistence.*;
 
 import java.io.Serial;
@@ -38,6 +39,11 @@ public class Aluno implements Serializable {
         this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
+    }
+    //Pequeno teste so para implementação do metodo delete no service
+    //Logo mas para frente podemos definir um melhor solução
+    public Aluno(AlunoDTO aluno){
+        this.id= aluno.getId();
     }
 
     public List<Turma> getTurma() {

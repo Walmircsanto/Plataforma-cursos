@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/aluno")
@@ -33,5 +34,15 @@ public class AlunoController {
     public ResponseEntity<List<AlunoDTO>> getAll(){
         List<AlunoDTO> alunos = alunoService.getAll();
         return ResponseEntity.ok(alunos);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity delete( @PathVariable Long id){
+        Optional<AlunoDTO> existingAluno = Optional.ofNullable(this.alunoService.getById(id));
+        if(existingAluno.isPresent()){
+            this.alunoService.delete(id);
+            return ResponseEntity.ok().build();
+        }
+           return ResponseEntity.notFound().build();
     }
 }
