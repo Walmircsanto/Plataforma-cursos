@@ -43,4 +43,12 @@ public class AlunoService {
           alunoRepository.delete(aluno);
         }
     }
+
+    public void update(Aluno aluno){
+        AlunoDTO alunoDTO = getById(aluno.getId());
+        Aluno alunoo = new Aluno(alunoDTO);
+        if(alunoo != null){
+            alunoRepository.save(aluno);
+        }
+    }
 }

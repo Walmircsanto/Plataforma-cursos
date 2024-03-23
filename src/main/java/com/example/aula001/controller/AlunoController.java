@@ -38,11 +38,18 @@ public class AlunoController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete( @PathVariable Long id){
-        Optional<AlunoDTO> existingAluno = Optional.ofNullable(this.alunoService.getById(id));
+        Optional<AlunoDTO> existingAluno = Optional.ofNullable(this.alunoService.getById(id)); //Esse metodo utilizando o optional  deveria  ser implementado no service ja que o mesmo não deve
+                                                                                               // ser tão verboso(O controller)
         if(existingAluno.isPresent()){
             this.alunoService.delete(id);
             return ResponseEntity.ok().build();
         }
            return ResponseEntity.notFound().build();
+    }
+    @PutMapping("/update")
+    public ResponseEntity update(@RequestBody Aluno aluno){
+        this.alunoService.update(aluno);
+        return  ResponseEntity.ok().build();
+
     }
 }
