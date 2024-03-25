@@ -41,12 +41,24 @@ public class AlunoService {
         AlunoDTO alunoDTO = getById(id);
         Aluno aluno = new Aluno(alunoDTO);
         Optional<AlunoDTO> existingAluno = Optional.ofNullable(getById(id));
-        alunoRepository.delete(aluno);
+        if(existingAluno.isPresent()){
+            alunoRepository.delete(aluno);
+        }else {
+            throw new RuntimeException();
+        }
+
 
     }
 
     public AlunoDTO update(Aluno aluno){
         AlunoDTO alunoDTO = getById(aluno.getId());
-        return alunoDTO;
+        Optional<AlunoDTO> existingAluno = Optional.ofNullable(getById(aluno.getId()));
+        if(existingAluno.isPresent()){
+            alunoRepository.save(aluno);
+            return alunoDTO;
+        }else{
+            return null;
+        }
+
     }
 }
