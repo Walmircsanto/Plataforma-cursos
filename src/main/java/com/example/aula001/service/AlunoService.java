@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AlunoService {
@@ -39,16 +40,13 @@ public class AlunoService {
     public void delete(Long id){
         AlunoDTO alunoDTO = getById(id);
         Aluno aluno = new Aluno(alunoDTO);
-        if(alunoDTO != null){
-          alunoRepository.delete(aluno);
-        }
+        Optional<AlunoDTO> existingAluno = Optional.ofNullable(getById(id));
+        alunoRepository.delete(aluno);
+
     }
 
-    public void update(Aluno aluno){
+    public AlunoDTO update(Aluno aluno){
         AlunoDTO alunoDTO = getById(aluno.getId());
-        Aluno alunoo = new Aluno(alunoDTO);
-        if(alunoo != null){
-            alunoRepository.save(aluno);
-        }
+        return alunoDTO;
     }
 }
