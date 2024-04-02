@@ -48,5 +48,6 @@ public class AlunoController {
         this.alunoService.update(aluno);
         return  ResponseEntity.ok().build();
 
+
     }
 }
