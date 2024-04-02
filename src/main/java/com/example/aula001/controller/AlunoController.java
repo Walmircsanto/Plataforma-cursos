@@ -39,7 +39,7 @@ public class AlunoController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete( @PathVariable Long id){
        //Esse metodo utilizando o optional  deveria  ser implementado no service ja que o mesmo não deve
-                                                                                               // ser tão verboso(O controller)
+        // ser tão verboso(O controller)
            this.alunoService.delete(id);
             return ResponseEntity.ok().build();
     }
